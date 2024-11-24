@@ -7,14 +7,16 @@ div.assembly,
 }
 
 .assembly {
-  top: 50%;
+  position: absolute;
+  top: 25rem;
   left: 50%;
   transform: rotateX(-16deg) rotateY(0deg);
   font-size: 2vmin;
+  z-index: -1;
 }
 
 .wheel {
-  transform: translate(-5rem);
+  transform: translate(0rem);
   perspective: 1200px;
 }
 
@@ -132,6 +134,8 @@ div.assembly,
     background-color: #c0efa2;
     padding: 1rem;
     box-shadow: 0 17px 9px #eee;
+    position: relative;
+    z-index: 1;
   }
   
   .header-button span {
@@ -206,16 +210,20 @@ div.assembly,
   
   .leader-pic .radius {
     position: absolute;
-    width: 8.25rem;
-    height: 8.25rem;
     top: 0;
     right: 0;
     background-color: #c0efa2;
     z-index: -1;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 0 30px 10.5px 30px;
+      border-color: transparent transparent #FF4532 transparent;
+      transform: rotate(0deg);
   }
   
   .leader-pic .radius::after {
-      content: '';
+      /* content: ''; */
       background-color: #fff;
       width: 8.25rem;
       height: 8.25rem;
@@ -239,14 +247,12 @@ div.assembly,
     border-radius: 0 0 83px 0px / 0 0 49px 0px;
   }
   
-  .graph {
-    margin-top: 5rem;
+  /* .graph {
     position: relative;
-    position: absolute;
     width: 100%;
     right: 0;
-    top: 13%;
-  }
+    top: 5rem;
+  } */
   
   .graph.hidden {
     animation: hidden 0.5s ease 1;
@@ -264,10 +270,10 @@ div.assembly,
   }
   
   .graph .container-lg {
-    max-height: 60rem;
+    /* min-height: 55rem; */
     background-color: #ffffff80;
-    z-index: 3000;
     backdrop-filter: blur(3px);
+    /* padding-top: 6rem; */
   }
   
   .graph .col-lg-1,
@@ -310,8 +316,8 @@ div.assembly,
   }
   
   .graph .item {
-    width: clamp(3.5rem, 1.923vw + 4.625rem, 7rem);
-    height: clamp(3.5rem, 1.923vw + 3.7rem, 7rem);
+    width: 74px;
+    height: 74px;
     border-radius: 50%;
     background: linear-gradient(to left, #e6fbf7, #c5c5c5);
     cursor: pointer;
