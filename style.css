@@ -138,6 +138,13 @@ ul {
   z-index: 100000;
 }
 
+.Bismillah {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-button span {
   color: white;
   font-weight: 400;
