@@ -366,6 +366,15 @@ function intervalManger(run = true) {
 
 intervalManger()
 
+document.querySelector('.rotor').addEventListener('mouseover', () => {
+  intervalManger(false)
+})
+
+document.querySelector('.rotor').addEventListener('mouseout', () => {
+  intervalManger(true)
+})
+
+
 function displayMenu(nodeContainer) {
   const icon = document.querySelector(`${nodeContainer} .node .node-icon`).innerHTML
   document.querySelector('.item-holder .item').innerHTML = icon
