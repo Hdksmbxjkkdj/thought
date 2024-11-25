@@ -12,7 +12,6 @@ div.assembly,
   left: 50%;
   transform: rotateX(-16deg) rotateY(0deg);
   font-size: 2vmin;
-  z-index: -1;
 }
 
 .wheel {
@@ -64,7 +63,7 @@ div.assembly,
 }
 
 .node-text {
-  font-size: 1rem;
+  font-size: 12px;
   position: absolute;
   left: 8px;
   bottom: -2rem;
@@ -95,6 +94,7 @@ div.assembly,
 }
 .logo {
   transform: translateX(50%) translateY(-50%);
+  filter: drop-shadow(0 67px 15px silver);
 }
 
 /* other */
@@ -105,14 +105,14 @@ div.assembly,
   box-sizing: border-box;
 }
 
-body {
+body, span, p, h1, h2, button, h3, h4, h5, a, a span {
   direction: rtl;
   font-family: "vazir";
 }
 
 @font-face {
   font-family: "vazir";
-  src: url("./fonts/ttf/Vazirmatn-Regular.ttf");
+  src: url("./assets/fonts/top\ thought/vazir/Vazirmatn_wght__2.ttf");
 }
 
 a {
@@ -135,12 +135,11 @@ ul {
   padding: 1rem;
   /* box-shadow: 0 17px 9px #eee; */
   position: relative;
-  z-index: 1;
+  z-index: 100000;
 }
 
 .header-button span {
   color: white;
-  font-family: Vazirmatn;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -270,9 +269,15 @@ ul {
   left: -45px;
 }
 
+.graph{
+  position: relative;
+  z-index: 100;
+}
+
 .graph.hidden {
   animation: hidden 0.5s ease 1;
   animation-fill-mode: forwards;
+  z-index: -10;
 }
 .leader-pic .radius:nth-child(4) {
   top: 6px;
@@ -332,7 +337,7 @@ ul {
   }
 }
 
-.graph .container-lg {
+.graph {
   /* min-height: 55rem; */
   background-color: #ffffff80;
   backdrop-filter: blur(3px);
@@ -388,6 +393,10 @@ ul {
   align-items: center;
   justify-content: center;
   z-index: 3;
+}
+
+.footer{
+  margin-bottom: 4rem;
 }
 
 .footer-items-container {
@@ -713,11 +722,13 @@ ul {
 }
 
 .round-circle {
-  position: absolute;
-  width: 900px;
+  position: absolute !important;
+  width: 1000px;
   height: 900px;
   border-radius: 50%;
   background-color: #FAFAFA;
-  transform: rotateX(65deg);
+  transform: rotateX(81deg);
   box-shadow: 0 70px 0px #F0F0F0;
+  left: calc(50% - 500px);
+  bottom: -44rem;
 }
