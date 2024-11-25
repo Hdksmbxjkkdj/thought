@@ -333,12 +333,16 @@ function changeAngle(angle = 0) {
       document.querySelector(`#container-${i} .node`).style.cursor = "";
       document.querySelector(`#container-${i} .node`).removeAttribute('onclick');
       document.querySelector(`#container-${i} .node-text`).style.opacity = "0";
+      document.querySelector(`#container-${i} .node`).removeAttribute("onmouseenter",`stop_rotate()`);
+      document.querySelector(`#container-${i} .node`).removeAttribute("onmouseleave",`start_rotate()`);
     } else {
       document.querySelector(`#container-${i} .node`).style.filter = "";
       document.querySelector(`#container-${i} .node`).style.opacity = "1";
       document.querySelector(`#container-${i} .node`).style.cursor = "pointer";
       document.querySelector(`#container-${i} .node`).setAttribute('onclick', `displayMenu("#container-${i}")`);
       document.querySelector(`#container-${i} .node-text`).style.opacity = "1";
+      document.querySelector(`#container-${i} .node`).setAttribute("onmouseenter",`stop_rotate()`);
+      document.querySelector(`#container-${i} .node`).setAttribute("onmouseleave",`start_rotate()`);
     }
     document.querySelector(
       `#container-${i} .node`
@@ -367,6 +371,14 @@ setInterval(() => {
   changeAngle(count);
 }, 70);
 // interval()
+
+function stop_rotate() {
+  console.log(status);
+}
+
+function start_rotate() {
+  console.log("hi");
+}
 
 function displayMenu(nodeContainer) {
   const icon = document.querySelector(`${nodeContainer} .node .node-icon`).innerHTML
@@ -405,10 +417,5 @@ categories.forEach((el, i, arr) => {
 })
 
 return_btn.addEventListener("click", function () {
-  if (graph.classList.contains("hidden")) {
-    graph.classList.remove("hidden")
-  }
-  else {
-    graph.classList.add("hidden");
-  }
+  graph.classList.add("hidden");
 })
