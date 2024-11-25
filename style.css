@@ -711,3 +711,13 @@ ul {
   transform: rotateX(70deg);
   box-shadow: 0 5rem 0px #f0f0f0;
 }
+
+.round-circle {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background-color: #FAFAFA;
+  transform: rotateX(65deg);
+  box-shadow: 0 70px 0px #F0F0F0;
+}
