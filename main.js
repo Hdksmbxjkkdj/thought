@@ -350,35 +350,21 @@ function changeAngle(angle = 0) {
   });
 }
 var count = 0;
-var status = true;
-var y;
-var interval = function () {
-  if (status) {
-    y = setInterval(() => {
+
+var x;
+
+function intervalManger(run = true) {
+  if (run) {
+    x = setInterval(() => {
       count += 1;
       changeAngle(count);
-    }, 10);
-  } else {
-    clearInterval(y);
+    }, 70);
+  }else{
+    clearInterval(x)
   }
-  // setTimeout(() => {
-  //     runRotate(count)
-  // }, 50);
-};
-
-setInterval(() => {
-  count += 1;
-  changeAngle(count);
-}, 70);
-// interval()
-
-function stop_rotate() {
-  console.log(status);
 }
 
-function start_rotate() {
-  console.log("hi");
-}
+intervalManger()
 
 function displayMenu(nodeContainer) {
   const icon = document.querySelector(`${nodeContainer} .node .node-icon`).innerHTML
