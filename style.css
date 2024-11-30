@@ -732,8 +732,8 @@ ul {
 }
 
 .sub-menu .main .menu-1 .active {
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 30.5%, 87.5% 50%, 100% 70%, 100% 100%, 0% 100%); */
-  clip-path: inset(10px 30px 40px 20px 15px);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 30.5%, 87.5% 50%, 100% 70%, 100% 100%, 0% 100%);
+  /* clip-path: inset(10px 30px 40px 20px 15px); */
   }
 
 /* .sub-menu .main .menu-1 .active::before {
