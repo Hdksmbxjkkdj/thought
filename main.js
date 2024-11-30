@@ -443,4 +443,8 @@ categories.forEach((el) => {
 return_btn.addEventListener("click", function () {
   graph.classList.remove("shown");
   graph.classList.add("hidden");
+  sub_menu.classList.remove("show");
+  menu_btn.forEach(el=>{
+    el.classList.remove("active");
+  })
 });
