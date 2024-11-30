@@ -1,3 +1,9 @@
+const menu_btn = document.querySelectorAll(".menu-btn");
+const categories = document.querySelectorAll(".categories");
+const sub_menu = document.getElementsByClassName("sub-menu")[0];
+const return_btn = document.getElementsByClassName("return")[0];
+const graph = document.getElementsByClassName("graph")[0];
+
 const nodesData = [
   {
     relations: [1],
@@ -380,20 +386,21 @@ function displayMenu(nodeContainer) {
   document.querySelector('.item-holder .item').innerHTML = icon
   document.querySelector('.title').innerText = document.querySelector(`${nodeContainer} .node .node-text`).innerText
 
-  document.querySelector('.graph').classList.toggle('hidden')
+  document.querySelector('.graph').classList.toggle('shown')
 
 }
 
-const menu_btn = document.querySelectorAll(".menu-btn");
-const categories = document.querySelectorAll(".categories");
-const sub_menu = document.getElementsByClassName("sub-menu")[0];
-const return_btn = document.getElementsByClassName("return")[0];
-const graph = document.getElementsByClassName("graph")[0];
-
-menu_btn.forEach((el, i, arr) => {
+menu_btn.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault()
-    sub_menu.classList.add("show")
+    if(!sub_menu.classList.contains("show"))
+    sub_menu.classList.add("show") 
+  else {
+    sub_menu.classList.remove("show");
+    setTimeout(() => {
+      sub_menu.classList.add("show")
+    }, 100);
+  }
     menu_btn.forEach(el => {
       el.classList.remove("active")
     })
@@ -401,7 +408,7 @@ menu_btn.forEach((el, i, arr) => {
   })
 })
 
-categories.forEach((el, i, arr) => {
+categories.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
     categories.forEach(el => {
@@ -412,5 +419,9 @@ categories.forEach((el, i, arr) => {
 })
 
 return_btn.addEventListener("click", function () {
-  graph.classList.add("hidden");
+  graph.classList.remove("shown");
+  sub_menu.classList.remove("show")
+  menu_btn.forEach(el=>{
+    el.classList.remove("active")
+  })
 })
