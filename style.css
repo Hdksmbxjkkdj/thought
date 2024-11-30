@@ -175,21 +175,23 @@ ul {
   .header {
     padding: 0.5rem;
   }
-  .leader-pic img {
-    width: 100px !important;
-    height: 100px !important;
+  .leader-image{
+    width: 50px !important;
+    height: 50px !important;
   }
   .watch::after {
-    right: -3.6rem !important;
+    right: -1.6rem !important;
   }
   .watch::before {
-    right: 1.6rem !important;
+    right: 2.6rem !important;
   }
 }
 
 .leader-image {
   position: relative;
   z-index: 30;
+  width: 76px;
+  height: 76px;
 }
 
 .watch {
