@@ -266,8 +266,9 @@ nodesData.forEach((node, i) => {
   const nodeContainer = document.createElement("div");
   nodeContainer.classList.add("node-container");
   nodeContainer.setAttribute("id", `container-${i}`);
-  nodeContainer.style.transform = `rotateY(${node.position}deg) translateZ(${node.radius
-    }px) translateY(${node.translateY ? node.translateY : 0}px)`;
+  nodeContainer.style.transform = `rotateY(${node.position}deg) translateZ(${
+    node.radius
+  }px) translateY(${node.translateY ? node.translateY : 0}px)`;
 
   // nodeContainer.addEventListener('mouseover', function () {
   //     status = false;
@@ -329,26 +330,39 @@ function changeAngle(angle = 0) {
 
     document.querySelector(
       `#container-${i}`
-    ).style.transform = `rotateY(${newAngle}deg) translateZ(${node.radius
-      }px) translateY(${node.translateY ? node.translateY : 0}px)`;
+    ).style.transform = `rotateY(${newAngle}deg) translateZ(${
+      node.radius
+    }px) translateY(${node.translateY ? node.translateY : 0}px)`;
     var x = newAngle % 360;
     if (x > 90 && x < 270) {
       document.querySelector(`#container-${i} .node`).style.filter =
         "blur(2px)";
       document.querySelector(`#container-${i} .node`).style.opacity = "0.9";
       document.querySelector(`#container-${i} .node`).style.cursor = "";
-      document.querySelector(`#container-${i} .node`).removeAttribute('onclick');
+      document
+        .querySelector(`#container-${i} .node`)
+        .removeAttribute("onclick");
       document.querySelector(`#container-${i} .node-text`).style.opacity = "0";
-      document.querySelector(`#container-${i} .node`).removeAttribute("onmouseenter",`stop_rotate()`);
-      document.querySelector(`#container-${i} .node`).removeAttribute("onmouseleave",`start_rotate()`);
+      document
+        .querySelector(`#container-${i} .node`)
+        .removeAttribute("onmouseenter", `stop_rotate()`);
+      document
+        .querySelector(`#container-${i} .node`)
+        .removeAttribute("onmouseleave", `start_rotate()`);
     } else {
       document.querySelector(`#container-${i} .node`).style.filter = "";
       document.querySelector(`#container-${i} .node`).style.opacity = "1";
       document.querySelector(`#container-${i} .node`).style.cursor = "pointer";
-      document.querySelector(`#container-${i} .node`).setAttribute('onclick', `displayMenu("#container-${i}")`);
+      document
+        .querySelector(`#container-${i} .node`)
+        .setAttribute("onclick", `displayMenu("#container-${i}")`);
       document.querySelector(`#container-${i} .node-text`).style.opacity = "1";
-      document.querySelector(`#container-${i} .node`).setAttribute("onmouseenter",`stop_rotate()`);
-      document.querySelector(`#container-${i} .node`).setAttribute("onmouseleave",`start_rotate()`);
+      document
+        .querySelector(`#container-${i} .node`)
+        .setAttribute("onmouseenter", `stop_rotate()`);
+      document
+        .querySelector(`#container-${i} .node`)
+        .setAttribute("onmouseleave", `start_rotate()`);
     }
     document.querySelector(
       `#container-${i} .node`
@@ -365,63 +379,68 @@ function intervalManger(run = true) {
       count += 1;
       changeAngle(count);
     }, 70);
-  }else{
-    clearInterval(x)
+  } else {
+    clearInterval(x);
   }
 }
 
-intervalManger()
+intervalManger();
 
-document.querySelector('.rotor').addEventListener('mouseover', () => {
-  intervalManger(false)
-})
+document.querySelector(".rotor").addEventListener("mouseover", () => {
+  intervalManger(false);
+});
 
-document.querySelector('.rotor').addEventListener('mouseout', () => {
-  intervalManger(true)
-})
-
+document.querySelector(".rotor").addEventListener("mouseout", () => {
+  intervalManger(true);
+});
 
 function displayMenu(nodeContainer) {
-  const icon = document.querySelector(`${nodeContainer} .node .node-icon`).innerHTML
-  document.querySelector('.item-holder .item').innerHTML = icon
-  document.querySelector('.title').innerText = document.querySelector(`${nodeContainer} .node .node-text`).innerText
-
-  document.querySelector('.graph').classList.toggle('shown')
-
+  const icon = document.querySelector(
+    `${nodeContainer} .node .node-icon`
+  ).innerHTML;
+  document.querySelector(".item-holder .item").innerHTML = icon;
+  document.querySelector(".title").innerText = document.querySelector(
+    `${nodeContainer} .node .node-text`
+  ).innerText;
+  if (graph.classList.contains("shown")) {
+    graph.classList.remove("shown");
+    graph.classList.add("hidden");
+  } else if (graph.classList.contains("hidden")) {
+    graph.classList.remove("hidden");
+    graph.classList.add("shown");
+  } else {
+    graph.classList.add("shown");
+  }
 }
 
 menu_btn.forEach((el) => {
   el.addEventListener("click", (e) => {
-    e.preventDefault()
-    if(!sub_menu.classList.contains("show"))
-    sub_menu.classList.add("show") 
-  else {
-    sub_menu.classList.remove("show");
-    setTimeout(() => {
-      sub_menu.classList.add("show")
-    }, 100);
-  }
-    menu_btn.forEach(el => {
-      el.classList.remove("active")
-    })
-    el.classList.add("active")
-  })
-})
+    e.preventDefault();
+    if (!sub_menu.classList.contains("show")) sub_menu.classList.add("show");
+    else {
+      sub_menu.classList.remove("show");
+      setTimeout(() => {
+        sub_menu.classList.add("show");
+      }, 100);
+    }
+    menu_btn.forEach((el) => {
+      el.classList.remove("active");
+    });
+    el.classList.add("active");
+  });
+});
 
 categories.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    categories.forEach(el => {
-      el.classList.remove("active")
-    })
-    el.classList.add("active")
-  })
-})
+    categories.forEach((el) => {
+      el.classList.remove("active");
+    });
+    el.classList.add("active");
+  });
+});
 
 return_btn.addEventListener("click", function () {
   graph.classList.remove("shown");
-  sub_menu.classList.remove("show")
-  menu_btn.forEach(el=>{
-    el.classList.remove("active")
-  })
-})
+  graph.classList.add("hidden");
+});
