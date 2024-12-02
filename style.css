@@ -515,6 +515,9 @@ p {
   font-size: clamp(0.7rem, 0.833vw + 0.6rem, 1.25rem);
   font-weight: 100;
   color: #001d86;
+  text-wrap: nowrap;
+  overflow: hidden;
+  max-width: 15rem;
 }
 
 .footer-items .text {
@@ -563,7 +566,7 @@ p {
   left: -13px;
   top: 30px;
   z-index: 100;
-  transition: all ease-in .3s;
+  transition: all ease .3s;
   display: none;
 }
 
@@ -894,18 +897,18 @@ p {
 /* infinite horizantal scroll */
 
 .marquee-container {
-  height: 10rem;
+  height: 13rem;
   overflow: hidden;
   position: relative;
   width: calc(100% - 2rem);
 }
 .marquee-container .marquee1 {
   position: absolute;
-  width: 130%;
+  width: 150%;
   animation: marquee 10s linear infinite;
 }
 .marquee-container .marquee2 {
-  width: 130%;
+  width: 150%;
   position: absolute;
   animation: marquee1 10s linear infinite;
   animation-delay: 5s;
