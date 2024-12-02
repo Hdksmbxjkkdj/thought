@@ -3,14 +3,16 @@ const categories = document.querySelectorAll(".categories");
 const sub_menu = document.getElementsByClassName("sub-menu")[0];
 const return_btn = document.getElementsByClassName("return")[0];
 const graph = document.getElementsByClassName("graph")[0];
-
+const sub_menu_container = document.querySelector(".sub-menu-container");
+const close_btn = document.querySelector(".btn-close");
+const active_menu = document.querySelector(".active-menu");
 const nodesData = [
   {
     relations: [1],
     width: 84,
     radius: 400,
     icon: '<img width="46px" src="./assets/images/media-movie-multimedia-video-svgrepo-com 1.svg" />',
-    text: "تولیدات رسانه",
+    text: "تولیدات رسانه تولیدات رسانه تولیدات رسانه تولیدات رسانه",
     position: 0,
     translateY: 0,
   },
@@ -343,12 +345,6 @@ function changeAngle(angle = 0) {
         .querySelector(`#container-${i} .node`)
         .removeAttribute("onclick");
       document.querySelector(`#container-${i} .node-text`).style.opacity = "0";
-      document
-        .querySelector(`#container-${i} .node`)
-        .removeAttribute("onmouseenter", `stop_rotate()`);
-      document
-        .querySelector(`#container-${i} .node`)
-        .removeAttribute("onmouseleave", `start_rotate()`);
     } else {
       document.querySelector(`#container-${i} .node`).style.filter = "";
       document.querySelector(`#container-${i} .node`).style.opacity = "1";
@@ -357,12 +353,6 @@ function changeAngle(angle = 0) {
         .querySelector(`#container-${i} .node`)
         .setAttribute("onclick", `displayMenu("#container-${i}")`);
       document.querySelector(`#container-${i} .node-text`).style.opacity = "1";
-      document
-        .querySelector(`#container-${i} .node`)
-        .setAttribute("onmouseenter", `stop_rotate()`);
-      document
-        .querySelector(`#container-${i} .node`)
-        .setAttribute("onmouseleave", `start_rotate()`);
     }
     document.querySelector(
       `#container-${i} .node`
@@ -402,30 +392,56 @@ function displayMenu(nodeContainer) {
   document.querySelector(".title").innerText = document.querySelector(
     `${nodeContainer} .node .node-text`
   ).innerText;
+  marquee(document.querySelector(".title"))
   if (graph.classList.contains("shown")) {
-    graph.classList.remove("shown");
-    graph.classList.add("hidden");
+    UnShownGraph();
   } else if (graph.classList.contains("hidden")) {
-    graph.classList.remove("hidden");
-    graph.classList.add("shown");
+    ShowGraph();
   } else {
     graph.classList.add("shown");
   }
 }
 
+function ShowGraph() {
+  graph.classList.remove("hidden");
+  graph.classList.add("shown");
+}
+
+function UnShownGraph() {
+  graph.classList.remove("shown");
+  graph.classList.add("hidden");
+}
+
+function ShowSubMenu() {
+  sub_menu.classList.add("show");
+}
+
+function UnShownSubMenu() {
+  sub_menu.classList.remove("show");
+}
+function DeselectItems() {
+  menu_btn.forEach((el) => {
+    el.classList.remove("active");
+  });
+}
+function hide_active_menu() {
+  active_menu.style.display="none";
+}
+
 menu_btn.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    if (!sub_menu.classList.contains("show")) sub_menu.classList.add("show");
-    else {
-      sub_menu.classList.remove("show");
+    active_menu.style.display = "block"
+    active_menu.style.top = e.target.offsetTop+"px"
+    if (!sub_menu.classList.contains("show")) {
+      ShowSubMenu();
+    } else {
+      UnShownSubMenu();
       setTimeout(() => {
-        sub_menu.classList.add("show");
+        ShowSubMenu();
       }, 100);
     }
-    menu_btn.forEach((el) => {
-      el.classList.remove("active");
-    });
+    DeselectItems()
     el.classList.add("active");
   });
 });
@@ -441,10 +457,23 @@ categories.forEach((el) => {
 });
 
 return_btn.addEventListener("click", function () {
-  graph.classList.remove("shown");
-  graph.classList.add("hidden");
-  sub_menu.classList.remove("show");
-  menu_btn.forEach(el=>{
-    el.classList.remove("active");
-  })
+  UnShownGraph();
+  UnShownSubMenu();
+  DeselectItems();
+  hide_active_menu();
 });
+
+close_btn.addEventListener("click", function () {
+  UnShownSubMenu();
+  DeselectItems();
+  hide_active_menu();
+});
+
+function marquee(element) {
+  if(element.offsetWidth>150) {
+   var marq = document.createElement("MARQUEE")
+   marq.innerText = element.innerText;
+   element.innerText = "";
+   element.appendChild(marq);
+  }
+}
