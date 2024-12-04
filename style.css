@@ -563,7 +563,7 @@ ul {
   position: relative !important;
 }
 
-/* .menu::before {
+.menu::before {
   content: "";
   width: 60px;
   height: 90px;
@@ -578,15 +578,16 @@ ul {
   backdrop-filter: blur();
   border-right: 45px solid transparent;
   border-left: 8px solid white;
-} */
+  border-top: 50px solid transparent;
+}
 
-.menu::before {
+/* .menu::before {
   content: "";
   position: absolute;
-  right: -41px;
+  right: -42px;
   top: 14px;
   border-radius: 58%;
-  transform: rotate(23deg);
+  transform: rotate(25deg);
   z-index: 2;
   background: transparent;
   backdrop-filter: blur();
@@ -594,7 +595,7 @@ ul {
   border-left: 13px solid white;
   border-top: 44px solid transparent;
   border-bottom: 23px solid transparent;
-}
+} */
 
 @media screen and (max-width: 1375px) {
   .menu {
