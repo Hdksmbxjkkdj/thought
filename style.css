@@ -697,7 +697,7 @@ ul {
   color: #fff;
   font-weight: 700;
   /* font-size: clamp(0.45rem, 0.4rem + 0.7258vw, 0.9rem); */
-  font-size: clamp(0.45rem, 1rem + 0.7258vw, 0.9rem);
+  font-size: clamp(0.45rem, 1rem + 0.7258vw, 1rem);
   text-wrap: nowrap;
   overflow: hidden;
   /* position: absolute;
@@ -735,7 +735,7 @@ ul {
   color: #001d86;
   font-weight: 700;
   /* font-size: clamp(0.45rem, 0.5242rem + 0.7258vw, 1.1rem); */
-  font-size: clamp(0.45rem, 0.75242rem + 0.7258vw, 1.1rem);
+  font-size: clamp(0.45rem, 0.75242rem + 0.7258vw, 1rem);
   width: 100%;
   display: block;
   padding: 0.35rem;
