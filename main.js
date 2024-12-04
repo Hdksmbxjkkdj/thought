@@ -308,7 +308,7 @@ function init() {
 
   if (h < 700) {
     document.querySelector('.assembly').style.top = 'calc(50vh - 140px)'
-    document.querySelector('.graph').style.paddingTop = '150px'
+    document.querySelector('.graph').style.paddingTop = '20px'
     document.querySelector('.footer').style.marginBottom = '0.5rem'
   }
   else if (h < 840) {
