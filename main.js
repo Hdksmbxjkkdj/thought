@@ -4,7 +4,7 @@ const sub_menu = document.getElementsByClassName("sub-menu")[0];
 const return_btn = document.getElementsByClassName("return")[0];
 const graph = document.getElementsByClassName("graph")[0];
 const sub_menu_container = document.querySelector(".sub-menu-container");
-const close_btn = document.querySelector(".btn-close");
+const close_btn = document.querySelectorAll(".btn-close");
 // const active_menu = document.querySelector(".active-menu");
 
 const nodesData = [
@@ -268,78 +268,81 @@ const rotor = document.getElementById("rotor");
 var w, hm, rotate_ratio, disc_ratio;
 
 function init() {
-  w = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
+  w =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
 
-  h = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;
+  h =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
   console.log(w);
-  
-  rotate_ratio, disc_ratio = 1;
+
+  rotate_ratio, (disc_ratio = 1);
 
   if (w < 525) {
-    rotate_ratio = 0.60
-    disc_ratio = 0.66
-  }
-  else if (w < 705) {
-    rotate_ratio = 0.65
-    disc_ratio = 0.66
-  }
-  else if (w < 768) {
-    rotate_ratio = 0.63
-    disc_ratio = 0.72
-  }
-  else if (w < 800) {
-    rotate_ratio = 0.72
-    disc_ratio = 0.75
-  }
-  else if (w < 1000) {
-    rotate_ratio = 0.78
-    disc_ratio = 0.8
+    rotate_ratio = 0.6;
+    disc_ratio = 0.66;
+  } else if (w < 705) {
+    rotate_ratio = 0.65;
+    disc_ratio = 0.66;
+  } else if (w < 768) {
+    rotate_ratio = 0.63;
+    disc_ratio = 0.72;
+  } else if (w < 800) {
+    rotate_ratio = 0.72;
+    disc_ratio = 0.75;
+  } else if (w < 1000) {
+    rotate_ratio = 0.78;
+    disc_ratio = 0.8;
   } else if (w < 1500) {
-    rotate_ratio = 0.9
-    disc_ratio = 0.9
+    rotate_ratio = 0.9;
+    disc_ratio = 0.9;
   } else if (w < 2000) {
-    rotate_ratio = 0.85
-    disc_ratio = 0.85
+    rotate_ratio = 0.85;
+    disc_ratio = 0.85;
   }
 
   if (h < 700) {
-    document.querySelector('.assembly').style.top = 'calc(50vh - 140px)'
-    document.querySelector('.graph').style.paddingTop = '20px'
-    document.querySelector('.footer').style.marginBottom = '0.5rem'
-  }
-  else if (h < 840) {
-    document.querySelector('.assembly').style.top = 'calc(50vh - 180px)'
-    document.querySelector('.graph').style.paddingTop = '150px'
-  }
-  else if (h < 880) {
-    document.querySelector('.assembly').style.top = 'calc(50vh - 228px)'
+    document.querySelector(".assembly").style.top = "calc(50vh - 140px)";
+    document.querySelector(".graph").style.paddingTop = "20px";
+    document.querySelector(".footer").style.marginBottom = "0.5rem";
+  } else if (h < 840) {
+    document.querySelector(".assembly").style.top = "calc(50vh - 180px)";
+    document.querySelector(".graph").style.paddingTop = "150px";
+  } else if (h < 880) {
+    document.querySelector(".assembly").style.top = "calc(50vh - 228px)";
   }
 
   // console.log();
-  document.querySelector('.menu-1').style.height = document.querySelector('.menu').clientHeight - 10 + 'px'
+  document.querySelector(".menu-1").style.height =
+    document.querySelector(".menu").clientHeight - 10 + "px";
 
-  document.querySelector('.round-circle').style.width = 1000 * disc_ratio + 'px'
-  document.querySelector('.round-circle').style.height = 900 * disc_ratio + 'px'
-  document.querySelector('.round-circle').style.left = `calc(50% - ${(1000 * disc_ratio) / 2}px)`;
-  document.querySelector('.round-circle').style.bottom = `-${41 * disc_ratio}rem`;
-
+  document.querySelector(".round-circle").style.width =
+    1000 * disc_ratio + "px";
+  document.querySelector(".round-circle").style.height =
+    900 * disc_ratio + "px";
+  document.querySelector(".round-circle").style.left = `calc(50% - ${
+    (1000 * disc_ratio) / 2
+  }px)`;
+  document.querySelector(".round-circle").style.bottom = `-${
+    41 * disc_ratio
+  }rem`;
 }
-["load", "resize"].forEach(event => {
+["load", "resize"].forEach((event) => {
   window.addEventListener(event, init);
 });
 
-init()
+init();
 
 nodesData.forEach((node, i) => {
   const nodeContainer = document.createElement("div");
   nodeContainer.classList.add("node-container");
   nodeContainer.setAttribute("id", `container-${i}`);
-  nodeContainer.style.transform = `rotateY(${node.position}deg) translateZ(${rotate_ratio * node.radius}px) translateY(${node.translateY ? node.translateY : 0}px)`;
-
+  nodeContainer.style.transform = `rotateY(${node.position}deg) translateZ(${
+    rotate_ratio * node.radius
+  }px) translateY(${node.translateY ? node.translateY : 0}px)`;
 
   const nodeElement = document.createElement("div");
   nodeElement.classList.add("node");
@@ -368,33 +371,18 @@ document.querySelectorAll('div[id *= "container-"]').forEach((item, index) => {
   };
 });
 
-// nodesData.forEach((item, index) => {
-//     item.relations.forEach((pos) => {
-//         let x2 = nodesData[pos].line.x
-//         let y2 = nodesData[pos].line.y
-
-//         console.log("f", y2 - item.line.y + "px");
-
-//         var newSvg = `<svg>
-//         <line x1="${item.line.x}" y1="${item.line.y}" x2="${x2}" y2="${y2}" stroke="blue" stroke-width="2"></line>
-//         </svg>`
-
-//         document.querySelector('.rotor').innerHTML += newSvg
-
-//     })
-// })
-
 function changeAngle(angle = 0) {
   nodesData.forEach((node, i) => {
     let newAngle = angle + node.position;
 
-    /***  
+    /***
      * update rotaiton
      */
 
     document.querySelector(
       `#container-${i}`
-    ).style.transform = `rotateY(${newAngle}deg) translateZ(${rotate_ratio * node.radius
+    ).style.transform = `rotateY(${newAngle}deg) translateZ(${
+      rotate_ratio * node.radius
     }px) translateY(${node.translateY ? node.translateY : 0}px)`;
     var x = newAngle % 360;
     if (x > 90 && x < 270) {
@@ -465,7 +453,6 @@ function displayMenu(nodeContainer) {
   }
 }
 
-
 function ShowGraph() {
   graph.classList.remove("hidden");
   graph.classList.add("shown");
@@ -478,12 +465,12 @@ function UnShownGraph() {
 
 function ShowSubMenu() {
   sub_menu.classList.add("show");
-  document.querySelector('.right-side').style.zIndex = 100
+  document.querySelector(".right-side").style.zIndex = 100;
 }
 
 function UnShownSubMenu() {
   sub_menu.classList.remove("show");
-  document.querySelector('.right-side').style.zIndex = -5
+  document.querySelector(".right-side").style.zIndex = -5;
 }
 function DeselectItems() {
   menu_btn.forEach((el) => {
@@ -497,9 +484,9 @@ function hide_active_menu() {
 menu_btn.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    // active_menu.style.display = "block";
-    // if (graph.offsetHeight > e.target.offsetTop) active_menu.style.top = (e.target.offsetTop + 6) + "px";
-    // active_menu.style.top = (e.target.getBoundingClientRect().top - 56) + "px";
+    if(document.documentElement.clientWidth<767){
+      document.querySelector(".title-container .close").style.display = "block";
+    }
     if (!sub_menu.classList.contains("show")) {
       ShowSubMenu();
     } else {
@@ -517,23 +504,21 @@ categories.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
     categories.forEach((el) => {
-      console.log(e.target);
-
-      if (!el.classList.contains('categories-option')) {
+      if (!el.classList.contains("categories-option")) {
         el.classList.remove("active");
       }
       if (w < 768) {
-        el.style.display = 'none'
-        el.style.zIndex = -1
+        el.style.display = "none";
+        el.style.zIndex = -1;
       }
     });
 
-    if (!el.classList.contains('categories-option')) {
+    if (!el.classList.contains("categories-option")) {
       el.classList.add("active");
     }
     if (w < 768) {
-      document.querySelector('.categories-option').style.zIndex = 1
-      document.querySelector('.categories-option').innerHTML = el.innerHTML
+      document.querySelector(".categories-option").style.zIndex = 1;
+      document.querySelector(".categories-option").innerHTML = el.innerHTML;
     }
   });
 });
@@ -542,13 +527,14 @@ return_btn.addEventListener("click", function () {
   UnShownGraph();
   UnShownSubMenu();
   DeselectItems();
-  // hide_active_menu();
 });
 
-close_btn.addEventListener("click", function () {
-  UnShownSubMenu();
-  DeselectItems();
-  // hide_active_menu();
+close_btn.forEach(element => {
+  element.addEventListener("click", function () {
+    UnShownSubMenu();
+    DeselectItems();
+    document.querySelector(".title-container .close").style.display = "none";
+  });
 });
 
 function marquee(element) {
@@ -560,19 +546,12 @@ function marquee(element) {
   }
 }
 
-document.querySelector('.categories-option').addEventListener('click', function () {
-  document.querySelectorAll('.categories').forEach((item) => {
-    item.style.display = 'flex'
-    item.style.zIndex = 3
-  })
-  this.style.zIndex = -1
-})
-
-// return_btn.addEventListener("click", function () {
-//   graph.classList.remove("shown");
-//   graph.classList.add("hidden");
-//   sub_menu.classList.remove("show");
-//   menu_btn.forEach(el => {
-//     el.classList.remove("active");
-//   })
-// });
+document
+  .querySelector(".categories-option")
+  .addEventListener("click", function () {
+    document.querySelectorAll(".categories").forEach((item) => {
+      item.style.display = "flex";
+      item.style.zIndex = 3;
+    });
+    this.style.zIndex = -1;
+  });
