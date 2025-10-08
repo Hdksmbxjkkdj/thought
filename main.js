@@ -4,15 +4,16 @@ const sub_menu = document.getElementsByClassName("sub-menu")[0];
 const return_btn = document.getElementsByClassName("return")[0];
 const graph = document.getElementsByClassName("graph")[0];
 const sub_menu_container = document.querySelector(".sub-menu-container");
-const close_btn = document.querySelector(".btn-close");
-const active_menu = document.querySelector(".active-menu");
+const close_btn = document.querySelectorAll(".btn-close");
+// const active_menu = document.querySelector(".active-menu");
+
 const nodesData = [
   {
     relations: [1],
     width: 84,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/media-movie-multimedia-video-svgrepo-com 1.svg" />',
-    text: "تولیدات رسانه تولیدات رسانه تولیدات رسانه تولیدات رسانه",
+    icon: '<img width="65%" src="./assets/images/media-movie-multimedia-video-svgrepo-com 1.svg" />',
+    text: "تولیدات رسانه",
     position: 0,
     translateY: 0,
   },
@@ -20,7 +21,7 @@ const nodesData = [
     relations: [],
     width: 74,
     radius: 390,
-    icon: '<img width="46px" src="./assets/images/language-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/language-svgrepo-com 1.svg" />',
     text: "زبان‌های خارجی",
     position: 20,
     translateY: -50,
@@ -29,7 +30,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 400,
-    icon: '<img width="32px" src="./assets/images/pen-swirl-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/pen-swirl-svgrepo-com 1.svg" />',
     text: "محتوای متنی",
     position: 30,
     translateY: 30,
@@ -38,7 +39,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 410,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "امور استان‌ها",
     position: 15,
     translateY: 50,
@@ -47,7 +48,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/collections-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/collections-svgrepo-com 1.svg" />',
     text: "پیش تولید",
     position: 50,
     translateY: 0,
@@ -56,7 +57,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 410,
-    icon: '<img width="46px" src="./assets/images/palette-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/palette-svgrepo-com 1.svg" />',
     text: "مدیریت هنر و تبلیغ نوین",
     position: 70,
     translateY: 50,
@@ -65,7 +66,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 400,
-    icon: '<img width="32px" src="./assets/images/share-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/share-svgrepo-com 1.svg" />',
     text: "عملیات رسانه‌ای",
     position: 80,
     translateY: -40,
@@ -74,7 +75,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 390,
-    icon: '<img width="36px" src="./assets/images/city-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/city-svgrepo-com 1.svg" />',
     text: "امور اجرایی",
     position: 90,
     translateY: 50,
@@ -83,7 +84,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/gregorian-chants-svgrepo-com 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/gregorian-chants-svgrepo-com 1.svg" />',
     text: "ادیان و مذاهب",
     position: 110,
     translateY: 0,
@@ -92,7 +93,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 400,
-    icon: '<img width="32px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "تولیدات رسانه",
     position: 125,
     translateY: 50,
@@ -101,7 +102,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 390,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "زبان‌های خارجی",
     position: 130,
     translateY: -50,
@@ -110,7 +111,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 400,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "محتوای متنی",
     position: 146,
     translateY: 50,
@@ -119,7 +120,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 390,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "امور استان‌ها",
     position: 150,
     translateY: -36,
@@ -128,7 +129,7 @@ const nodesData = [
     relations: [],
     width: 84,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "پیش تولید",
     position: 170,
     translateY: 0,
@@ -137,7 +138,7 @@ const nodesData = [
     relations: [],
     width: 74,
     radius: 390,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "مدیریت هنر و تبلیغ نوین",
     position: 190,
     translateY: -50,
@@ -146,7 +147,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 400,
-    icon: '<img width="32px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "عملیات رسانه‌ای",
     position: 200,
     translateY: 30,
@@ -155,7 +156,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 410,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "امور اجرایی",
     position: 185,
     translateY: 50,
@@ -164,7 +165,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 410,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "ادیان و مذاهب",
     position: 220,
     translateY: 50,
@@ -173,7 +174,7 @@ const nodesData = [
     relations: [],
     width: 74,
     radius: 400,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "تولیدات رسانه",
     position: 230,
     translateY: -40,
@@ -182,7 +183,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 390,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "زبان‌های خارجی",
     position: 240,
     translateY: 50,
@@ -191,7 +192,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "محتوای متنی",
     position: 260,
     translateY: 0,
@@ -200,7 +201,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "امور استان‌ها",
     position: 280,
     translateY: 0,
@@ -209,7 +210,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "پیش تولید",
     position: 295,
     translateY: 50,
@@ -218,7 +219,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 390,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "مدیریت هنر و تبلیغ نوین",
     position: 300,
     translateY: -50,
@@ -227,7 +228,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 400,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "عملیات رسانه‌ای",
     position: 316,
     translateY: 50,
@@ -236,7 +237,7 @@ const nodesData = [
     relations: [],
     width: 57,
     radius: 390,
-    icon: '<img width="36px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "امور اجرایی",
     position: 320,
     translateY: -36,
@@ -245,7 +246,7 @@ const nodesData = [
     relations: [],
     width: 80,
     radius: 410,
-    icon: '<img width="46px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "ادیان و مذاهب",
     position: 330,
     translateY: 50,
@@ -254,7 +255,7 @@ const nodesData = [
     relations: [],
     width: 53,
     radius: 400,
-    icon: '<img width="32px" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
+    icon: '<img width="65%" src="./assets/images/iran-svgrepo-com (1) 1.svg" />',
     text: "تولیدات رسانه",
     position: 345,
     translateY: -50,
@@ -264,25 +265,89 @@ const nodesData = [
 
 const rotor = document.getElementById("rotor");
 
+var w, hm, rotate_ratio, disc_ratio;
+
+function init() {
+  w =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+  h =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+  console.log(w);
+
+  rotate_ratio, (disc_ratio = 1);
+
+  if (w < 525) {
+    rotate_ratio = 0.6;
+    disc_ratio = 0.66;
+  } else if (w < 705) {
+    rotate_ratio = 0.65;
+    disc_ratio = 0.66;
+  } else if (w < 768) {
+    rotate_ratio = 0.63;
+    disc_ratio = 0.72;
+  } else if (w < 800) {
+    rotate_ratio = 0.72;
+    disc_ratio = 0.75;
+  } else if (w < 1000) {
+    rotate_ratio = 0.78;
+    disc_ratio = 0.8;
+  } else if (w < 1500) {
+    rotate_ratio = 0.9;
+    disc_ratio = 0.9;
+  } else if (w < 2000) {
+    rotate_ratio = 0.85;
+    disc_ratio = 0.85;
+  }
+
+  if (h < 700) {
+    document.querySelector(".assembly").style.top = "calc(50vh - 140px)";
+    document.querySelector(".graph").style.paddingTop = "20px";
+    document.querySelector(".footer").style.marginBottom = "0.5rem";
+  } else if (h < 840) {
+    document.querySelector(".assembly").style.top = "calc(50vh - 180px)";
+    document.querySelector(".graph").style.paddingTop = "150px";
+  } else if (h < 880) {
+    document.querySelector(".assembly").style.top = "calc(50vh - 228px)";
+  }
+
+  // console.log();
+  document.querySelector(".menu-1").style.height =
+    document.querySelector(".menu").clientHeight - 10 + "px";
+
+  document.querySelector(".round-circle").style.width =
+    1000 * disc_ratio + "px";
+  document.querySelector(".round-circle").style.height =
+    900 * disc_ratio + "px";
+  document.querySelector(".round-circle").style.left = `calc(50% - ${
+    (1000 * disc_ratio) / 2
+  }px)`;
+  document.querySelector(".round-circle").style.bottom = `-${
+    41 * disc_ratio
+  }rem`;
+}
+["load", "resize"].forEach((event) => {
+  window.addEventListener(event, init);
+});
+
+init();
+
 nodesData.forEach((node, i) => {
   const nodeContainer = document.createElement("div");
   nodeContainer.classList.add("node-container");
   nodeContainer.setAttribute("id", `container-${i}`);
   nodeContainer.style.transform = `rotateY(${node.position}deg) translateZ(${
-    node.radius
+    rotate_ratio * node.radius
   }px) translateY(${node.translateY ? node.translateY : 0}px)`;
 
-  // nodeContainer.addEventListener('mouseover', function () {
-  //     status = false;
-  // })
-  // nodeContainer.addEventListener('mouseout', function () {
-  //     status = true;
-  //     interval()
-  // })
   const nodeElement = document.createElement("div");
   nodeElement.classList.add("node");
-  nodeElement.style.width = `${node.width}px`;
-  nodeElement.style.height = `${node.width}px`;
+  nodeElement.style.width = `${rotate_ratio * node.width}px`;
+  nodeElement.style.height = `${rotate_ratio * node.width}px`;
   nodeElement.style.transform = `rotateY(-${node.position}deg)`;
 
   const nodeIcon = document.createElement("div");
@@ -306,22 +371,6 @@ document.querySelectorAll('div[id *= "container-"]').forEach((item, index) => {
   };
 });
 
-// nodesData.forEach((item, index) => {
-//     item.relations.forEach((pos) => {
-//         let x2 = nodesData[pos].line.x
-//         let y2 = nodesData[pos].line.y
-
-//         console.log("f", y2 - item.line.y + "px");
-
-//         var newSvg = `<svg>
-//         <line x1="${item.line.x}" y1="${item.line.y}" x2="${x2}" y2="${y2}" stroke="blue" stroke-width="2"></line>
-//         </svg>`
-
-//         document.querySelector('.rotor').innerHTML += newSvg
-
-//     })
-// })
-
 function changeAngle(angle = 0) {
   nodesData.forEach((node, i) => {
     let newAngle = angle + node.position;
@@ -333,7 +382,7 @@ function changeAngle(angle = 0) {
     document.querySelector(
       `#container-${i}`
     ).style.transform = `rotateY(${newAngle}deg) translateZ(${
-      node.radius
+      rotate_ratio * node.radius
     }px) translateY(${node.translateY ? node.translateY : 0}px)`;
     var x = newAngle % 360;
     if (x > 90 && x < 270) {
@@ -414,10 +463,12 @@ function UnShownGraph() {
 
 function ShowSubMenu() {
   sub_menu.classList.add("show");
+  document.querySelector(".right-side").style.zIndex = 100;
 }
 
 function UnShownSubMenu() {
   sub_menu.classList.remove("show");
+  document.querySelector(".right-side").style.zIndex = -5;
 }
 function DeselectItems() {
   menu_btn.forEach((el) => {
@@ -431,8 +482,9 @@ function hide_active_menu() {
 menu_btn.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
-    active_menu.style.display = "block";
-    if(graph.offsetHeight>e.target.offsetTop) active_menu.style.top = e.target.offsetTop + "px";
+    if(document.documentElement.clientWidth<767){
+      document.querySelector(".title-container .close").style.display = "block";
+    }
     if (!sub_menu.classList.contains("show")) {
       ShowSubMenu();
     } else {
@@ -450,9 +502,22 @@ categories.forEach((el) => {
   el.addEventListener("click", (e) => {
     e.preventDefault();
     categories.forEach((el) => {
-      el.classList.remove("active");
+      if (!el.classList.contains("categories-option")) {
+        el.classList.remove("active");
+      }
+      if (w < 768) {
+        el.style.display = "none";
+        el.style.zIndex = -1;
+      }
     });
-    el.classList.add("active");
+
+    if (!el.classList.contains("categories-option")) {
+      el.classList.add("active");
+    }
+    if (w < 768) {
+      document.querySelector(".categories-option").style.zIndex = 1;
+      document.querySelector(".categories-option").innerHTML = el.innerHTML;
+    }
   });
 });
 
@@ -460,13 +525,14 @@ return_btn.addEventListener("click", function () {
   UnShownGraph();
   UnShownSubMenu();
   DeselectItems();
-  hide_active_menu();
 });
 
-close_btn.addEventListener("click", function () {
-  UnShownSubMenu();
-  DeselectItems();
-  hide_active_menu();
+close_btn.forEach(element => {
+  element.addEventListener("click", function () {
+    UnShownSubMenu();
+    DeselectItems();
+    document.querySelector(".title-container .close").style.display = "none";
+  });
 });
 
 function marquee(element) {
@@ -477,3 +543,13 @@ function marquee(element) {
     element.appendChild(marq);
   }
 }
+
+document
+  .querySelector(".categories-option")
+  .addEventListener("click", function () {
+    document.querySelectorAll(".categories").forEach((item) => {
+      item.style.display = "flex";
+      item.style.zIndex = 3;
+    });
+    this.style.zIndex = -1;
+  });
